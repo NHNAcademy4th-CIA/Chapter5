@@ -23,7 +23,7 @@ public class Problem1 {
         int count = 0;
 
         do {
-            pairOfDice = new PairOfDice((int) (Math.random() * 6 + 1), (int) (Math.random() * 6 + 1));
+            pairOfDice = new PairOfDice();
             printDiceStat(pairOfDice);
             count++;
         } while (pairOfDice.getDice1()+pairOfDice.getDice2()!=2);
@@ -38,11 +38,10 @@ class PairOfDice {
     private int dice1;
     private int dice2;
 
-    public PairOfDice(int dice1, int dice2) {
-        this.dice1 = dice1;
-        this.dice2 = dice2;
+    public PairOfDice() {
+        this.dice1 = (int)(Math.random()*6+1);
+        this.dice2 = (int)(Math.random()*6+1);
     }
-
 
     public int getDice1() {
         return dice1;
