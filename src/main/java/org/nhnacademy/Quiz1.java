@@ -11,7 +11,7 @@ public class Quiz1 {
 
     public Quiz1(){
         PairOfDice pairOfDice = new PairOfDice();
-        pairOfDice.hasSnakeEyes();
+        pairOfDice.hasPair(2);
         logger.info("{}",pairOfDice);
     }
 
@@ -43,14 +43,19 @@ class PairOfDice {
         count++;
     }
 
-    /***
-     * snakeEye를 가질때까지 반복하는 메소드
+    /**
+     * pair가 나올떼까지 주사위 돌리는 메소드
+     * @param num 원하는숫자
+     * @return 몇번 굴렸는지
      */
-    public void hasSnakeEyes(){
-        while(!isPair(2))
+    public int hasPair(int num){
+        count =0;
+        while(!isPair(num))
         {
+            count++;
             roll();
         }
+        return count;
     }
 
     /***
