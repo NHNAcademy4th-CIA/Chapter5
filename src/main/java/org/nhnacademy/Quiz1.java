@@ -64,7 +64,7 @@ class PairOfDice {
      * @return 페어가 맞으면 true
      */
     public boolean isPair(int number){
-        return die1+die2==number;
+        return die1+die2==number&&die1==die2;
     }
     @Override
     public String toString(){
