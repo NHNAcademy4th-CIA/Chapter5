@@ -1,5 +1,8 @@
 package org.nhnacademy.lsj.blackJack;
 
+/**
+ * 숫자, 무늬 저장.
+ */
 public class Card {
 
     public final static int SPADES = 0;   // Codes for the 4 suits, plus Joker.
@@ -39,27 +42,31 @@ public class Card {
 
     /**
      * Creates a card with a specified suit and value.
+     *
      * @param theValue the value of the new card.  For a regular card (non-joker),
-     * the value must be in the range 1 through 13, with 1 representing an Ace.
-     * You can use the constants Card.ACE, Card.JACK, Card.QUEEN, and Card.KING.
-     * For a Joker, the value can be anything.
-     * @param theSuit the suit of the new card.  This must be one of the values
-     * Card.SPADES, Card.HEARTS, Card.DIAMONDS, Card.CLUBS, or Card.JOKER.
+     *                 the value must be in the range 1 through 13, with 1 representing an Ace.
+     *                 You can use the constants Card.ACE, Card.JACK, Card.QUEEN, and Card.KING.
+     *                 For a Joker, the value can be anything.
+     * @param theSuit  the suit of the new card.  This must be one of the values
+     *                 Card.SPADES, Card.HEARTS, Card.DIAMONDS, Card.CLUBS, or Card.JOKER.
      * @throws IllegalArgumentException if the parameter values are not in the
-     * permissible ranges
+     *                                  permissible ranges
      */
     public Card(int theValue, int theSuit) {
         if (theSuit != SPADES && theSuit != HEARTS && theSuit != DIAMONDS &&
-                theSuit != CLUBS && theSuit != JOKER)
+                theSuit != CLUBS && theSuit != JOKER) {
             throw new IllegalArgumentException("Illegal playing card suit");
-        if (theSuit != JOKER && (theValue < 1 || theValue > 13))
+        }
+        if (theSuit != JOKER && (theValue < 1 || theValue > 13)) {
             throw new IllegalArgumentException("Illegal playing card value");
+        }
         value = theValue;
         suit = theSuit;
     }
 
     /**
      * Returns the suit of this card.
+     *
      * @returns the suit, which is one of the constants Card.SPADES,
      * Card.HEARTS, Card.DIAMONDS, Card.CLUBS, or Card.JOKER
      */
@@ -69,6 +76,7 @@ public class Card {
 
     /**
      * Returns the value of this card.
+     *
      * @return the value, which is one of the numbers 1 through 13, inclusive for
      * a regular card, and which can be any value for a Joker.
      */
@@ -78,43 +86,63 @@ public class Card {
 
     /**
      * Returns a String representation of the card's suit.
+     *
      * @return one of the strings "Spades", "Hearts", "Diamonds", "Clubs"
      * or "Joker".
      */
     public String getSuitAsString() {
-        switch ( suit ) {
-            case SPADES:   return "Spades";
-            case HEARTS:   return "Hearts";
-            case DIAMONDS: return "Diamonds";
-            case CLUBS:    return "Clubs";
-            default:       return "Joker";
+        switch (suit) {
+            case SPADES:
+                return "Spades";
+            case HEARTS:
+                return "Hearts";
+            case DIAMONDS:
+                return "Diamonds";
+            case CLUBS:
+                return "Clubs";
+            default:
+                return "Joker";
         }
     }
 
     /**
      * Returns a String representation of the card's value.
+     *
      * @return for a regular card, one of the strings "Ace", "2",
      * "3", ..., "10", "Jack", "Queen", or "King".  For a Joker, the
      * string is always numerical.
      */
     public String getValueAsString() {
-        if (suit == JOKER)
+        if (suit == JOKER) {
             return "" + value;
-        else {
-            switch ( value ) {
-                case 1:   return "Ace";
-                case 2:   return "2";
-                case 3:   return "3";
-                case 4:   return "4";
-                case 5:   return "5";
-                case 6:   return "6";
-                case 7:   return "7";
-                case 8:   return "8";
-                case 9:   return "9";
-                case 10:  return "10";
-                case 11:  return "Jack";
-                case 12:  return "Queen";
-                default:  return "King";
+        } else {
+            switch (value) {
+                case 1:
+                    return "Ace";
+                case 2:
+                    return "2";
+                case 3:
+                    return "3";
+                case 4:
+                    return "4";
+                case 5:
+                    return "5";
+                case 6:
+                    return "6";
+                case 7:
+                    return "7";
+                case 8:
+                    return "8";
+                case 9:
+                    return "9";
+                case 10:
+                    return "10";
+                case 11:
+                    return "Jack";
+                case 12:
+                    return "Queen";
+                default:
+                    return "King";
             }
         }
     }
@@ -128,13 +156,14 @@ public class Card {
      */
     public String toString() {
         if (suit == JOKER) {
-            if (value == 1)
+            if (value == 1) {
                 return "Joker";
-            else
+            } else {
                 return "Joker #" + value;
-        }
-        else
+            }
+        } else {
             return getValueAsString() + " of " + getSuitAsString();
+        }
     }
 
 

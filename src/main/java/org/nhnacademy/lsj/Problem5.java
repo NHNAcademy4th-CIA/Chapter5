@@ -6,10 +6,16 @@ import org.nhnacademy.lsj.blackJack.Deck;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 블랙잭 게임이 진행됨.
+ */
 public class Problem5 {
 
     private static final Logger logger = LoggerFactory.getLogger(Problem5.class);
 
+    /**
+     * 유저는 100달러를 가짐 , 돈이 떨어질떄까지 블랙잭 게임 진행.
+     */
     public static void problem5() {
 
         Scanner sc = new Scanner(System.in);
@@ -37,6 +43,14 @@ public class Problem5 {
 
     }
 
+    /**
+     * 게임의 결과를 나타냄 .
+     *
+     * @param user     사용자.
+     * @param dealer   컴퓨터.
+     * @param flag     승패유무.
+     * @param betMoney 사용자가 배팅한 돈.
+     */
     public static void bettingResult(BlackJackHand user, BlackJackHand dealer, boolean flag, int betMoney) {
 
         if (flag) {
@@ -52,6 +66,14 @@ public class Problem5 {
 
     }
 
+    /**
+     * 블랙잭 게임이 진행됨 . 2장씩 받은 후 플레이어가 카드를 받을지 선택함 .
+     * 컴퓨터는 블랙잭 기본 룰을 따름.
+     *
+     * @param user   사용자 .
+     * @param dealer 컴퓨터.
+     * @return 게임의 승패.
+     */
     public static boolean playGame(BlackJackHand user, BlackJackHand dealer) {
 
         Scanner sc = new Scanner(System.in);
@@ -115,6 +137,12 @@ public class Problem5 {
 
     }
 
+    /**
+     * 딜러는 총 합이16 이하라면 계속해서 카드를 받는다.
+     *
+     * @param dealer 컴퓨터.
+     * @param deck   컴퓨터의 카드 덱.
+     */
     public static void dealerDealCard(BlackJackHand dealer, Deck deck) {
 
         if (dealer.getBlackjackValue() <= 16) {
@@ -124,6 +152,12 @@ public class Problem5 {
 
     }
 
+    /**
+     * 손패를 초기화함 , 블랙잭은 2장을 받고 시작하는 것이 기본 .
+     *
+     * @param hand 카드를 쥘 핸드.
+     * @param deck 카드를 뽑을 덱 .
+     */
     public static void initHand(BlackJackHand hand, Deck deck) {
         deck.shuffle();
         hand.add(deck.dealCard());

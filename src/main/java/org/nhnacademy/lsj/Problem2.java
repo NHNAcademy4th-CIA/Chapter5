@@ -1,13 +1,19 @@
-package org.nhnacademy;
+package org.nhnacademy.lsj;
 
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 사용자로 부터 숫자를 받음 , 후에 calc에서 사용할 수 있는 6개의 통계를 인쇄 .
+ */
 public class Problem2 {
 
     private static final Logger logger = LoggerFactory.getLogger(Problem2.class);
 
+    /**
+     * 문제가 실질적으뢴행됨.
+     */
     public static void problem2() {
 
         StatCalc calc = new StatCalc();
@@ -16,6 +22,11 @@ public class Problem2 {
 
     }
 
+    /**
+     * calc가 가지는 6개의 통계를 출력한다.
+     *
+     * @param calc 집합의 통계를내는 클래스.
+     */
     public static void printStat(StatCalc calc) {
 
         logger.info("총 입력 횟수는 {}", calc.getCount());
@@ -27,6 +38,11 @@ public class Problem2 {
 
     }
 
+    /**
+     * 0이 아닌 수가 나올 떄 까지 숫자를 입력받음 .
+     *
+     * @param calc 숫자를 저장할 클래스.
+     */
     public static void inputNumber(StatCalc calc) {
 
         Scanner sc = new Scanner(System.in);
@@ -56,8 +72,7 @@ class StatCalc {
     private double maxValue = -987654321;
 
     /**
-     * Add a number to the dataset.  The statistics will be computed for all
-     * the numbers that have been added to the dataset using this method.
+     * 입력이들어온 횟수 , 합 ,최대값 , 최소값.
      */
     public void enter(double num) {
         count++;
@@ -88,30 +103,28 @@ class StatCalc {
     }
 
     /**
-     * Return the number of items that have been entered into the dataset.
+     * 몇개나 입력이 들어왔는지.
      */
     public int getCount() {
         return count;
     }
 
     /**
-     * Return the sum of all the numbers that have been entered.
+     * 총 합.
      */
     public double getSum() {
         return sum;
     }
 
     /**
-     * Return the average of all the items that have been entered.
-     * The return value is Double.NaN if no numbers have been entered.
+     * 평균.
      */
     public double getMean() {
         return sum / count;
     }
 
     /**
-     * Return the standard deviation of all the items that have been entered.
-     * The return value is Double.NaN if no numbers have been entered.
+     * 표준편차.
      */
     public double getStandardDeviation() {
         double mean = getMean();

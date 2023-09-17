@@ -6,10 +6,16 @@ import org.nhnacademy.lsj.blackJack.Deck;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 카드를 받는 게임.
+ */
 public class Problem4 {
 
     private static final Logger logger = LoggerFactory.getLogger(Problem4.class);
 
+    /**
+     * 게임이 진행됨 , 카드를 받고 계산한 값을 출력.
+     */
     public static void problem4() {
 
         BlackJackHand blackJackHand = new BlackJackHand();

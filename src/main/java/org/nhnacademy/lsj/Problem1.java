@@ -1,8 +1,11 @@
-package org.nhnacademy;
+package org.nhnacademy.lsj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 두 주사위의 합이 2가 될 ㄸ까지 줏위 한 쌍을 굴린 회수를 계산하는 프로그램 .
+ */
 public class Problem1 {
 
 
@@ -10,13 +13,18 @@ public class Problem1 {
 
     public static void problem1() {
 
-        logger.info("{}",printCount());
+        logger.info("{}", printCount());
     }
 
-    public static void printDiceStat(PairOfDice pairOfDice){
-        logger.info("{}",pairOfDice);
+    public static void printDiceStat(PairOfDice pairOfDice) {
+        logger.info("{}", pairOfDice);
     }
 
+    /**
+     * 주사위의 합이 2가 나올때 까지 돌린 횟수를 출력 .
+     *
+     * @return 돌린 횟수.
+     */
     public static int printCount() {
 
         PairOfDice pairOfDice;
@@ -26,21 +34,24 @@ public class Problem1 {
             pairOfDice = new PairOfDice();
             printDiceStat(pairOfDice);
             count++;
-        } while (pairOfDice.getDice1()+pairOfDice.getDice2()!=2);
+        } while (pairOfDice.getDice1() + pairOfDice.getDice2() != 2);
         return count;
     }
 
 
 }
 
+/**
+ * 주사위 2개를 가진 클래스.
+ */
 class PairOfDice {
 
     private int dice1;
     private int dice2;
 
     public PairOfDice() {
-        this.dice1 = (int)(Math.random()*6+1);
-        this.dice2 = (int)(Math.random()*6+1);
+        this.dice1 = (int) (Math.random() * 6 + 1);
+        this.dice2 = (int) (Math.random() * 6 + 1);
     }
 
     public int getDice1() {

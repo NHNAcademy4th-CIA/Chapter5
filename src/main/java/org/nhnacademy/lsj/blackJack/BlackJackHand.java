@@ -1,5 +1,8 @@
 package org.nhnacademy.lsj.blackJack;
 
+/**
+ * 핸드를 포함하는 클래스.
+ */
 public class BlackJackHand {
 
 
@@ -14,44 +17,50 @@ public class BlackJackHand {
         return money;
     }
 
-    public void clear(){
+    public void clear() {
         hand.clear();
     }
 
-    private  int money;
+    private int money;
+
     public BlackJackHand() {
-        hand= new Hand();
-        money=100;
+        hand = new Hand();
+        money = 100;
     }
 
-    public void addMoney(int money){
-        this.money+=money;
+    public void addMoney(int money) {
+        this.money += money;
     }
 
-    public void minusMoney(int money){
-        this.money-=money;
+    public void minusMoney(int money) {
+        this.money -= money;
     }
 
-    public void add(Card card){
+    public void add(Card card) {
         hand.addCard(card);
     }
 
-    public void printHand(){
+    public void printHand() {
         hand.printHand();
     }
 
-    public void printHandByIndex(int index){
+    public void printHandByIndex(int index) {
         hand.printHandByIndex(index);
     }
 
-    public void handClear(){
+    public void handClear() {
         hand.clear();
     }
 
-    public boolean isEnoughMoney(){
-        return this.money>0;
+    public boolean isEnoughMoney() {
+        return this.money > 0;
     }
 
+    /**
+     * 손패의 합을 리턴함.
+     *
+     * @return 손패의합.
+     */
     public int getBlackjackValue() {
 
         int val;      // The value computed for the hand.
@@ -65,7 +74,7 @@ public class BlackJackHand {
 
         cards = hand.getCardCount();  // (method defined in class Hand.)
 
-        for ( int i = 0;  i < cards;  i++ ) {
+        for (int i = 0; i < cards; i++) {
             // Add the value of the i-th card in the hand.
             Card card;    // The i-th card;
             int cardVal;  // The blackjack value of the i-th card.
@@ -85,8 +94,9 @@ public class BlackJackHand {
         // 11 would leave the score less than or equal to 21,
         // then do so by adding the extra 10 points to val.
 
-        if ( ace == true  &&  val + 10 <= 21 )
+        if (ace == true && val + 10 <= 21) {
             val = val + 10;
+        }
 
         return val;
 

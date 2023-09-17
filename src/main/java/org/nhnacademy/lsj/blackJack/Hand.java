@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 카드를 잡고있는 핸드 .
+ */
 public class Hand {
 
-    private  static final Logger logger= LoggerFactory.getLogger(Hand.class);
+    private static final Logger logger = LoggerFactory.getLogger(Hand.class);
     private ArrayList<Card> hand;   // The cards in the hand.
 
-    protected void printHand(){
+    protected void printHand() {
 
-        for(var card:hand){
-            logger.info("숫자는 :{} 무늬는 : {}",card.getValueAsString(),card.getSuitAsString());
+        for (var card : hand) {
+            logger.info("숫자는 :{} 무늬는 : {}", card.getValueAsString(), card.getSuitAsString());
         }
     }
 
-    protected void printHandByIndex(int index){
-        logger.info("숫자는 {}",hand.get(index-1).getValueAsString());
+    protected void printHandByIndex(int index) {
+        logger.info("숫자는 {}", hand.get(index - 1).getValueAsString());
     }
 
     /**
@@ -36,19 +39,22 @@ public class Hand {
 
     /**
      * Add a card to the hand.  It is added at the end of the current hand.
+     *
      * @param c the non-null card to be added.
      * @throws NullPointerException if the parameter c is null.
      */
     public void addCard(Card c) {
-        if (c == null)
+        if (c == null) {
             throw new NullPointerException("Can't add a null card to a hand.");
+        }
         hand.add(c);
     }
 
     /**
      * Remove a card from the hand, if present.
+     *
      * @param c the card to be removed.  If c is null or if the card is not in
-     * the hand, then nothing is done.
+     *          the hand, then nothing is done.
      */
     public void removeCard(Card c) {
         hand.remove(c);
@@ -65,9 +71,10 @@ public class Hand {
      *                                  or equal to the number of cards in the hand.
      */
     public Card removeCard(int position) {
-        if (position < 0 || position >= hand.size())
+        if (position < 0 || position >= hand.size()) {
             throw new IllegalArgumentException("Position does not exist in hand: "
                     + position);
+        }
         hand.remove(position);
         return null;
     }
@@ -82,13 +89,15 @@ public class Hand {
     /**
      * Gets the card in a specified position in the hand.  (Note that this card
      * is not removed from the hand!)
+     *
      * @param position the position of the card that is to be returned
      * @throws IllegalArgumentException if position does not exist in the hand
      */
     public Card getCard(int position) {
-        if (position < 0 || position >= hand.size())
+        if (position < 0 || position >= hand.size()) {
             throw new IllegalArgumentException("Position does not exist in hand: "
                     + position);
+        }
         return hand.get(position);
     }
 
@@ -104,8 +113,8 @@ public class Hand {
             Card c = hand.get(0);  // Minimal card.
             for (int i = 1; i < hand.size(); i++) {
                 Card c1 = hand.get(i);
-                if ( c1.getSuit() < c.getSuit() ||
-                        (c1.getSuit() == c.getSuit() && c1.getValue() < c.getValue()) ) {
+                if (c1.getSuit() < c.getSuit() ||
+                        (c1.getSuit() == c.getSuit() && c1.getValue() < c.getValue())) {
                     pos = i;
                     c = c1;
                 }
@@ -128,8 +137,8 @@ public class Hand {
             Card c = hand.get(0);  // Minimal card.
             for (int i = 1; i < hand.size(); i++) {
                 Card c1 = hand.get(i);
-                if ( c1.getValue() < c.getValue() ||
-                        (c1.getValue() == c.getValue() && c1.getSuit() < c.getSuit()) ) {
+                if (c1.getValue() < c.getValue() ||
+                        (c1.getValue() == c.getValue() && c1.getSuit() < c.getSuit())) {
                     pos = i;
                     c = c1;
                 }
