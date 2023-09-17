@@ -1,6 +1,5 @@
 package org.nhnacademy;
 
-import com.sun.jdi.Value;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +11,10 @@ public class Quiz2 {
     Scanner scanner = new Scanner(System.in);
     Logger logger = LoggerFactory.getLogger(Quiz2.class);
 
-    public Quiz2(){
+    public Quiz2() {
         StatCalc statCalc = new StatCalc();
         double value;
-        while (!statCalc.isZero(value=scanner.nextDouble())) {
+        while (!statCalc.isZero(value = scanner.nextDouble())) {
             statCalc.enter(value);
         }
         logger.info("추가된 카운트 수는{}", statCalc.getCount());
@@ -40,19 +39,18 @@ class StatCalc {
     private int count;
     private double sum;
     private double squareSum;
-    private double max=0;
-    private double min=0;
+    private double max = 0;
+    private double min = 0;
 
     /***
      * 입력 메소드
      * @param num 입력 숫자
      */
     public void enter(double num) {
-        if(isZero(num))return;
-        if(min==0)
-        {
-            min=num;
-            max=num;
+        if (isZero(num)) return;
+        if (min == 0) {
+            min = num;
+            max = num;
         }
         sum += num;
         squareSum += num * num;
@@ -120,7 +118,7 @@ class StatCalc {
      * @param num 입력 값
      * @return 0이면 true
      */
-    public boolean isZero(double num){
-        return num==0;
+    public boolean isZero(double num) {
+        return num == 0;
     }
 }
