@@ -3,10 +3,6 @@ package org.nhnacademy.lsj;
 public class Main {
 
 
-    int value;
-    public Main(int value) {
-        this.value=value;
-    }
 
     public static void main(String[] args) {
 
