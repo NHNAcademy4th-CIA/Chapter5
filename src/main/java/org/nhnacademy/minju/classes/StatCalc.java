@@ -5,8 +5,8 @@ public class StatCalc {
     private int count;   // Number of numbers that have been entered.
     private double sum;  // The sum of all the items that have been entered.
     private double squareSum;  // The sum of the squares of all the items.
-    private double max = 987654321;
-    private double min = -987654321;
+    private double max = Double.MIN_VALUE;
+    private double min = Double.MAX_VALUE;
 
     /**
      * Add a number to the dataset.  The statistics will be computed for all
