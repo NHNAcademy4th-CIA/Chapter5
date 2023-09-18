@@ -3,6 +3,11 @@ package org.nhnacademy.lsj;
 public class Main {
 
 
+    int value;
+    public Main(int value) {
+        this.value=value;
+    }
+
     public static void main(String[] args) {
 
         //Problem1.problem1();
@@ -12,6 +17,7 @@ public class Main {
         //Problem5.problem5();
         //Problem6.problem6();
         //Problem7.problem7();
+
 
     }
 
