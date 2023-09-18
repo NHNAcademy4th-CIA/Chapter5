@@ -1,0 +1,401 @@
+Objects, Instance Methods, and Instance Variables
+
+클래스가 객체를 설명한다 or 클래스의 비정적 부분을 객체가 설명한다.라고 설명
+왜 비정적 부분을 설명하냐 , 정적인 부분 즉 static 한 부분들은
+객체가 설명하는것이 아닌 , Class variable 즉 클래스에 속하게 된다.
+그래서  ClassName.연산 이런식으로 사용함 , 객체 안만들어도 상관없음
+
+
+내가 생각하기에 객체란 , 내가 특정한 용도로 사용하기 위해 정의내린 Class를 사용하기위한
+하나의 도구임 , Type그 자체가 중요한 것이지 , 객체 자체는 그 Type을 사용하기 위해 찍어내는 것
+
+근데 왜 static은 객체 안만들어도 상관없지?  왜 그냥 쓸수있음??
+-> static 붙은 애들은 메서드나 , 변수 상관없이 컴파일해서 읽어올떄 data영역에 따로 올려놓는다.
+그래서 객체생성 -> 메모리 할당 -> 사용 이것이 아닌
+이미 ClassName.연산 -> data영역에 있는 해당 이름가진 static가져와 -> 이렇게 작동한다.
+
+그렇기에 Class의 일부다 , or ClassVariable이다 라고 말함
+객체는 여러개 찍어내도 이 Class는 하나니까
+
+그래서 static하다 -> 정적이다
+dynamic 하다 -> 동적이다 라고도 해용
+
+근데 보통 static -> 컴파일타임
+dynamic -> 런타임  이렇게 사용하는게 맞긴함
+
+
+
+클래스를 사용해 생선된 객체 -> 인스턴스
+
+이 객체가 가지고 있는 변수들이 인스턴스변수 , 인스턴스 메서드
+
+
+
+자바에서는 어떤 변수도 객체를 보유할 수 없어
+
+객체or reference type 들은 heap영역에 저장이 돼
+변수는 heap영역에 메모리 주소를 가르키는 일종의 포인터 역할임
+
+우리는 객채 생성할떄 new 해서 만든다 -> 메모리에 올릴꺼고 , 이 메모리번지 참조해
+
+따라서 변수가 객체를 저장한다 ? -> 아예 틀린말 -> 가르킨다(points to) or 참고한다가(refers to) 맞음
+
+
+근데 웃기게도  객체 = null 이건 실제로 객체가 null값을 가지는 거임
+포인터개념이 아니라 Literal하게 null을 가진것 , 진짜 아무값도 없음을 나타냄
+
+자바는 기본적으로 Call By Value라 swap같은거 못함 , 근데 reference type은 갖고있는 값 자체가
+주소값이라서 swap이 가능함
+
+
+클래스를 만들떄
+거의 대부분의 경우 필드변수를 private라고 선언해야 한다.
+이를 통해 변수로 수행하는 작업을 제어하는거야
+근데 private이면 외부에서는 얘를 어떻게 쓸거야??
+Accessor Methode 를 쓰면 된다  -> getter , setter
+
+Accessor Methode -> getter setter는 자바식 사투리임 , mutator method 이러표현이 맞음
+
+
+
+
+Constructors and Object Initialization
+
+
+우리가 객체를 생성할떄 인스턴스 변수를 초기화 하는 방법은 다양하지만
+주로 생성자를 통해서 new 로 만들어낼떄 초기화도 같이 시켜준다.
+
+생성자는 Class에게 물어보는 methdoe로 , 객체 생성 전에 이미 존재해야 한다.
+따라서 일종의 static methode처럼 볼 수도 있다.  , 실제로 JAVA에서는 생성자를 Class의 맴버로 보지않음.
+물론 용도가 아예 다름으로 이런식으로 비교하면 안된다.
+
+우리가 생성자를 따로 만들지 않으면 Default Constructor가 자동생성된다.
+
+
+Garbage Collection
+
+그럼 만드는건 알겠어 new로 만들어 , heap에 메모리 올려
+
+그럼 수거는 누가해가?
+
+Garbage Collector가 해간다.
+
+자바에서는 메모리 수거해가는거 시스템의 역할임 , 즉 자바의 역할
+이걸 사용자가 하게되면 골아파짐 , 버그많이 발생함
+
+나는 안쓸줄 알고 free()이런식으로 해제했는데
+또 쓰네? dangling pointer error 허상 포인터에러가 터진다
+
+혹은 쓸줄알고 냅뒀는데 안쓰네?
+Memory Leak -> 메모리 누수
+
+
+
+Programming with Objects
+
+String , StringBuilder , Scanner 와 같이 이미 내장하고있는 Class 도 존재함
+java.util  ,  java.lang , 등등..
+
+
+The class "Object"
+
+
+또 자바에서는 Class들 끼리도 관계가 존재해
+
+예를들어 Object Class는 모든 Class들의 super타입이야
+
+equals 같은 경우는 Object가 가진 메서드인데
+이건 주소값이 같은지를 체크해 , 얘가 가지고있는 Literal이 아니라
+모든 클래스는 Object의 subType이니까 ,
+
+값으로 비교하고 싶으면 equals 를 재정의 , 즉  Overriding 해서 써야해
+
+출력에 대한 기본 값으로 toString도 재정의해서 많이 쓴다.
+
+
+Object-oriented Analysis and Design
+
+잘 디자인된 클래스는 편집 없이 재사용할수 있는 클래스야
+특정 프로그램에서 특정 작업을 수행하도록 세심하게 제작되지 않음..
+
+기존 클래스는 SubClass를 갖는게 가능함
+
+대규모 프로젝트에서는 문제를 Specification(구체화)하는것 부터 시작 ->
+문제를 Analysis(분석) -> design(설계) -> 그 후에 코딩하고 테스트하고 디버깅하고
+
+그후에 완성본을 계속해서 Maintenance(유지보수) 해줘야 함
+이런식으로 Software Life Cycle 정해짐
+
+이러한 프로그래밍 접근 방식이  Software Engineering임
+
+
+Inheritance, Polymorphism, and Abstract Classes
+
+자바가 말하는 객체지향 , 코드의 재사용을 줄이고 , 코드 길이를 줄이고 , 기능을 확장하고..
+등등은 대부분 Polymorphism 이거나 Inheritance  , Polymorphism이 특히 중요
+
+기존의 클래스를 상속받을수 있다 , 여기서 말하는 상속 Inheritance 는 별개아님
+그냥 코드 복사 붙여넣기야
+
+또한 Class는 Abstract Barrier를 가져 , 즉 implementation을 가짐
+
+따라서 이 Class는 특정 연산 or 특정변수들은
+무조건 가져야함 ,  그러니까 Barrier안에있는 것들은 private으로 해서 Accessor Methode써서 접근하잖아
+getter , setter 같은걸로 , 그런이유야
+
+Interface는 반대로 기능 명시만 해놓은거야 느낌이달라 , 이건 야 얘는 이런걸 할줄은 알아야한다??
+구현은 니 알아서해 근데 이런 기능이 있긴 해야된다?? 이런 느낌임
+
+따라서 Interface는 여러개 Implements할수있고 Class는 하나만 Extends 받을수 있음
+
+용어또한 Implements(구현) Exctends(확장) 다름
+
+자바는 Extends or implements받으면 무조건 서브타입 관계가 되버림
+
+이런식으로 Class Hierarchy 를 가진다 . 계층구조 갖게됨
+
+
+
+Polymorphism
+
+이건 크게 3가지로 존재해
+
+OverLoading , SubTyping , Generic Programing
+
+자바가 말하는 oop 의 핵심은 SubTyping 관계를 이용한 Polymorphism임
+
+오버로딩 = 메소드 시그니처 다르면 , 너가 넣어주는 값에 따라서 알아서 dispatch해줄게
+
+서브타입핑 = Class Hierarchy를 이용함 , 보통 Suprer 타입을 파라미터로 설정해두면
+그것의 subType 은 모두 들어올수 있기 떄문에 코드 간략화 시켜서 사용함
+
+제네릭프로그래밍 = <T>를 써서 구현 , 타입명시 명확히 안해 , 그래서 연산만 구현해놓으면
+
+Ex) <T>sum(T num)
+	return num+10;
+
+이런식으로 해놓으면 int float double long 다 와도 돌아감
+
+
+Abstract Classes
+
+Class니까 기본적으로 Abstrac Barrier 가져
+구현을 가짐
+
+근데 애는 추가적으로 기능 명시만 해두고 싶기도 해
+
+딱 그런용도로 쓰는것
+
+여기서 파생된게 Interface 야 , 극단적으로 Abstract한거지
+
+그래서 추상 메서드밖에 없어 , 즉 기능명시밖에 없는거야
+
+이런건 사실 여러개 상속받아 써도 문제없잖아?
+근데 지금 Class는 implementation을 기반으로 만들어져서 여러개 못 받아 써
+
+이러면 머리아파 -> 추상메서드만 가진 추상 클래스를 Interface라고 말하고 , 여러개 상속받을수 있게 하자 !
+
+이렇게 된거임
+
+
+
+Final Methods and Classes
+
+Final이 붙는건 변경하지 말라는 의미임 ,
+
+따라서 final int a=5;
+a=10;
+이렇게 하면 syntax 에러 나옴
+
+reference type의 경우 갖고있는 값은 메모리 번지 값이라서
+
+메모리번지의 값을 바꾸는것 까지는 가능 , but 메모리 번지 값을 바꾸는건 안됨
+
+
+메서드나 클래스도 똑같이 final붙으면 변경이 불가능함
+extends 안되고 , overriding 안됨
+
+
+
+
+this and super
+
+
+The Special Variable this
+
+Math.PI 는 Math 클래스에서 간단한 이름 PI를 갖는 static 변수임
+이런건 클래스에 속하게 되지
+
+하지만 인스턴스 변수의 경우에는 클래스에 속하는 게 아니라 객체에 속하게 된다.
+
+메서드를 작성할때 이 메서드를 포함하는 객체를 참조하고 싶다면 this를 쓴다.
+
+즉 this를 쓴다 = 이 메서드를 포함하고있는 객체를 참조할게
+그러므로 static변수의 경우 클래스에 속하는 , 즉 객체에 속하지 않음으로
+this. 으로 참조할수 없다.
+
+
+The Special Variable super
+
+super는 서브클래스에서 사용하기 위함이다.
+super는 해당 클래스가 상위클래스에 속함을 의미한다.
+
+super가 존재하는 이유는 상위클래스에 숨겨진 항목에 엑세스 할 수 있기 떄문임.
+
+만약 어떤 Class를 extends받는다면 , 우리는 그것의 코드를 그대로 갖다 쓸 수 있어
+실질적으로도 extends의 기능은 코드 복사 붙여넣기 뿐이야
+
+하지만 실질적으로 눈에 보여주지는 않아 , super는 그런 부분을 이용해서 꺼내 쓸 수 있게 만들어
+
+super.상위클래스메서드
+super.상위클래스변수
+
+이런식으로 가시적으로 쓸 수 있게 만들어 준다.
+
+하지만 이런 기능은 핵심이 아니야
+
+super 핵심은 상위 클래스의 메서드를 재정의 할 수 있게 해줘
+
+public void roll(){
+
+    super.roll();
+    sout("슈퍼의roll메서드이용");
+    추가적인 기능들
+
+    return;
+}
+
+이렇게 만들면 super 클래스에 있는 roll이란 메서드를 간편하게 확장시키고 바꿀수 있어
+
+
+super and this As Constructors
+
+우리가 상속받을떄 Constructor 는 상속되지 않아
+그렇기 떄문에 따로 만들어줘야 해 , 아니면 디폴트로 만들어짐
+
+이때 supre를 이용해 상위클래스에있는 생성자를 호출해 올 수 있습니다.
+
+
+
+Interfaces
+
+클래스는 기본적으로 하나만 extends 받아서 쓸 수 있어
+이는 위에서도 설명했음.
+
+그래서 기능만 명시돼있는 인터페이스를 만들어 사용하기로 했음
+이건 당연하게도 여러개 상속받아서 쓸 수 있는 것임
+
+
+인터페이스도 그 나름의 변화를 거쳤는데
+처음나온 인터페이스는 정말 추상메서드만 가질 수 있었음
+
+근데 쓰다보니까 , 이거 어차피 연산만 갖는거고
+여러개 상속받아서 써도 문제없는 애들인데
+그냥 자체적으로 기능을 갖고있으면 안되나??
+
+그래도 문제가 없을 것 같은데??
+또 상수같은 것들은 (static final) 이런건 어차피 전체 클래스에서 하나만 있는건데
+그냥 갖다 써도 될거같은데? , 어차피 여러개 상속받아도 상수들이 여러개 되는거니까
+이건 하나만 존재하잖아 애초에
+
+그래서 인터페이스는 default methode와 상수를 가질수 있게됨
+
+물론 상수이외의 instance 변수들은 포함하지 않아
+
+
+인터페이스도 당연히 다른 인터페이스를 상속 받을 수 있음
+
+그리고 이 인터페이스를 상속 받는 Class는 모든 인터페이스에 대해서 구현을 해줘야 해
+
+
+
+Interfaces as Types
+
+마지막으로 인터페이스는 타입으로 쓸 수 있어
+
+자바에서는 메서드는 객체가 아니야
+그래서 얘는 메서드의 파라미터로 넘겨줄 수 없어.
+
+근데 이러면 람다를 하나도 못 쓰게 되잖아??
+
+왜냐? 메서드는 무조건 타입이 필요해  즉 자바에서는 First Class Object만 가능한거야
+왜? First Class Function 자체가 없거든
+
+First Class Object = 변수 할당 가능 , 파라미터로 사용 가능 , 다른 함수의 결과로서 리턴 될 수 있음
+
+그래서 짱구 돌리다가 나온게 Functional Interface인 거야
+인터페이스는 타입이니까 = First Class Object니까
+여따가 함수 하나만 만들어놓고 이거 오버라이딩해서 갖다 쓰면 그게 First Class Function아닐까??
+
+그래서 함수형 인터페이스로 함수형 언어를 흉내냄
+
+그 흉내냄의 과정에서 나오는게 람다 Expression
+
+
+
+
+Static Nested Classes
+
+정적중첩 클래스
+
+정말 말 그대로 클래스안에 클래스를 만들어 쓰는거야
+
+자바에서 Nested Classes는 containing 클래스의 정의내에 있는 모든 클래스야
+정적중첩클래스는 Anonymous Class 도 포함임
+
+심지어 애들은 포함하는 private으로 선언된 애들도 갖다 쓸 수 있음
+
+여기있는 중첩 클래스는 본 클래스 자체의 일부야
+
+
+
+
+Inner Classes
+
+이건 non - static Nested Class 를 의미해 , 중첩클래스가 더 큰 개념임
+중첩 클래스 = (비정적,정적)
+
+한마디로 중첩클래스가 static이 아니면 Inner Class 인 거지
+
+얘는 조금 다른게
+containing 클래스에 속하는 객체가 중첩클래스의 복사본을 갖고 있는 것임
+
+애도 마찬가지로 private된거 엑세스 가능해
+
+
+중첩 클래스를 static으로 할지 non-static으로 할지 는 매우 간단해
+
+중첩 클래스가 Containing(포함) Class의 인스턴스 변수나 인스턴스 메서드를 사용해야 하는 경우
+비정적으로 만든다 , 그렇지 않으면 정적으로 만든다
+
+
+
+Anonymous Inner Classes
+
+익명 내부 클래스
+
+클래스,메서드를 한번만 사용하고 다시 사용하지 않을거면 익명함수를 만든다
+
+익명 클래스의 경우에는 new를 통해서 생성하지 않음
+
+
+Drawable redSquare = new Drawable() {
+       public void draw(GraphicsContext g) {
+          g.setFill(Color.RED);
+          g.fillRect(10,10,100,100);
+       }
+   };
+
+다음과 같은 식임 인터페이스의 경우 () 매개변수목록은 비어있어야 해
+클래스의 경우 super 클래스의 생성자에 대한 매개변수를 포함해
+
+
+
+Local Classes and Lambda Expressions
+
+서브루틴 내에서 정의된 클래스 = Local Class
+
+이건 서브루틴 내에서만 사용 가능 하기 때문에 Local이란 이름이 붙는다.
+
+그러나 로컬 클래스에 의해 정의된 객체는 해당 서브루틴 외부에서 사용할 수 이씁니다.
+즉 return 값으로 반환되거나 다른 서르부틴의 매개변수로 들어갈 수 있음
