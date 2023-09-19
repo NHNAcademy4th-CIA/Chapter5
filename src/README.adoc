@@ -1,0 +1,186 @@
+= Chapter3
+Firstname Lastname <author@asciidoctor.org>
+3.0, July 29, 2022: AsciiDoc article template
+:toc:
+:icons: font
+:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+
+== 1.객체 지향 프로그래밍은 클래스 와 객체를 사용합니다 . 클래스는 무엇이며 객체는 무엇입니까? 클래스와 객체의 관계는 무엇입니까?
+.클래스란?
+====
+객체를 만들기위한 툴
+====
+
+.객체란?
+====
+구현할 대상
+====
+
+== 2.Java에서 null 의 의미와 이 특별한 값이 필요한 이유를 주의 깊게 설명하십시오 .
+
+.null이란?
+====
+객체가 비어있는것.
+====
+
+== 3.생성자 란 무엇입니까 ? 클래스에서 생성자의 목적은 무엇입니까?
+
+====
+객체를 인스턴스화 시키는것
+====
+
+== 4.Kumquat 이 클래스 이름이고 과일이 Kumquat 유형의 변수라고 가정합니다 . " fruit = new Kumquat(); " 문장의 의미는 무엇입니까 ? 즉, 컴퓨터가 이 명령문을 실행할 때 무엇을 하는가? (완전한 대답을 하도록 노력하십시오. 컴퓨터는 여러 가지 일을 합니다.).형식매개변수?
+====
+Kumquat를 인스턴스화 시키고 fruit이라고 이름을 지어라
+====
+
+== 5.인스턴스 변수 와 인스턴스 메소드 라는 용어는 무엇을 의미합니까 ?
+.용어
+====
+클래스 내에 non-static한 변수와 메소드
+====
+
+== 6. 서브클래스 와 슈퍼클래스 라는 용어의 의미를 설명하세요 .
+.슈퍼클래스, 서브클래스
+====
+슈퍼 클래스는 부모, 서브 클래스는 자식
+====
+
+
+
+== 7. 두 인스턴스 변수가 비공개 이고 각 인스턴스 변수에 대해 getter 메서드와 setter 메서드가 있도록 다음 클래스를 수정합니다.
+
+.code
+[source,java]
+----
+public class Player {
+   String name;
+   int score;
+}
+----
+.code
+[source,java]
+----
+public class Player {
+   private String name;
+   private int score;
+   public String getName(){
+       return name;
+   }
+    public void setName(String name) {
+      this.name = name;
+   }
+   public int getScore() {
+      return score;
+   }
+   public void setScore(int score) {
+      this.score = score;
+   }
+}
+----
+
+== 8.이전 질문에 정의된 Player 클래스 에 toString() 이라는 인스턴스 메서드가 있는 이유를 설명하세요 . 이 메서드에 대한 정의가 클래스 정의에 나타나지 않는데도 말이죠.
+.이유?
+====
+기본적으로 클래스는 Object이기때문에 객체이다. 이들은 toString을 따로 정의하지 않는다면 주소를 출력한다.
+====
+
+== 9. 다형성이라는 용어를 설명하세요 .
+.다형성이란?
+====
+객체지향의 3가지 특성중 하나이며 똑같은 이름이라도 매개변수 타입이 다르다면 다르게 사용할수있는것이다.
+====
+
+
+== 10.Java는 메모리 관리를 위해 "가비지 수집"을 사용합니다. 여기서 가비지 수집이 무엇을 의미하는지 설명하세요. 가비지 수집의 대안은 무엇입니까?
+.가비지 컬렉터란?
+====
+프로그램이 알아서 안쓰는 객체를 지워주는것.
+====
+
+== 11. 추상 클래스 란 무엇 이며 Java에서 추상 클래스를 어떻게 인식할 수 있습니까?
+.추상클래스란?
+====
+추상 클래스는 객체를 생성하는 데 사용할 수 없는 클래스
+자식클래스를 만들기위한 기반이 되는 클래스.
+====
+
+== 12. this란 무엇인가?
+====
+자기자신을 가리츠는 함수
+====
+
+== 13. 이 문제의 경우 매우 간단하지만 완전한 클래스를 작성해야 합니다. 클래스는 0, 1, 2, 3, 4, ...를 계산하는 카운터를 나타냅니다. 클래스 이름은 Counter 여야 합니다 . 카운터 값을 나타내는 하나의 전용 인스턴스 변수가 있습니다 . 여기에는 두 가지 인스턴스 메서드가 있습니다. increment()는 카운터 값에 1을 추가하고 getValue()는 현재 카운터 값을 반환합니다. Counter 클래스에 대한 완전한 정의를 작성합니다 .
+[source,java]
+----
+/**
+ * 이 클래스의 객체는 0부터 계산되는 카운터를 나타냅니다.
+ */
+공용 클래스 Counter {
+
+   private int value = 0; // 카운터의 현재 값.
+
+   /**
+    * 카운터 값에 1을 더합니다.
+    */
+   public void increment() {
+      value++;
+   }
+
+   /**
+    * 카운터의 현재 값을 반환합니다.
+    */
+   public int getValue() {
+      반환 값;
+   }
+
+} // 클래스 끝 카운터
+
+// end::[]
+----
+
+== 14.이 문제는 이전 질문의 Counter 클래스를 사용합니다. 다음 프로그램 세그먼트는 동전 던지기를 100번 시뮬레이션하기 위한 것입니다. 앞면 수와 뒷면 수를 계산하려면 두 개의 Counter 객체인 headCount 및 tailCount 를 사용해야 합니다 . 그렇게 되도록 빈칸을 채우십시오.
+.code
+[source,java]
+----
+Counter headCount, tailCount;
+tailCount = new Counter();
+headCount = new Counter();
+for ( int flip = 0;  flip < 100;  flip++ ) {
+   if (Math.random() < 0.5)    // There's a 50/50 chance that this is true.
+
+       ______________________ ;   // Count a "head".
+
+   else
+
+       ______________________ ;   // Count a "tail".
+}
+
+System.out.println("There were " + ___________________ + " heads.");
+
+System.out.println("There were " + ___________________ + " tails.");
+----
+.답
+----
+Counter headCount, tailCount;
+tailCount = new Counter();
+headCount = new Counter();
+for ( int flip = 0;  flip < 100;  flip++ ) {
+   if (Math.random() < 0.5)    // There's a 50/50 chance that this is true.
+       headCount.increment() ;   // Count a "head", using headCount
+   else
+       tailCount.increment() ;   // Count a "tail", using tailCount
+}
+System.out.println(("There were " + headCount.getValue() + " heads.");
+System.out.println(("There were " + tailCount.getValue() + " tails.");
+
+----
+
+
+== 15. " if (obj.equals(null)) "를 테스트하는 것이 왜 의미가 없는지 설명하십시오 .
+====
+onject는 null이면 비교를 하는것이 아닌 Exception이 터진다.
+====
+
+

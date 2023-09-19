@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Quiz3 {
-    Logger logger = LoggerFactory.getLogger(Quiz2.class);
+    Logger logger = LoggerFactory.getLogger(Quiz3.class);
     private static final int loop = 10_000;
     public Quiz3(){
         for (int i=2;i<=12;i+=2) {
