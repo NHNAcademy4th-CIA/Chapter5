@@ -16,9 +16,11 @@ public class Problem2 {
      */
     public static void problem2() {
 
+
         StatCalc calc = new StatCalc();
         inputNumber(calc);
         printStat(calc);
+
 
     }
 
@@ -48,11 +50,7 @@ public class Problem2 {
         Scanner sc = new Scanner(System.in);
 
         double num;
-        while (true) {
-            num = sc.nextDouble();
-            if (num == 0) {
-                return;
-            }
+        while ((num = sc.nextDouble()) != 0) {
             calc.enter(num);
         }
     }
