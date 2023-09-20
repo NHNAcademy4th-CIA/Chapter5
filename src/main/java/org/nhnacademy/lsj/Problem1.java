@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 두 주사위의 합이 2가 될 ㄸ까지 줏위 한 쌍을 굴린 회수를 계산하는 프로그램 .
+ * 두 주사위의 합이 2가 될 때까지 줏위 한 쌍을 굴린 회수를 계산하는 프로그램 .
  */
 public class Problem1 {
 
@@ -13,7 +13,7 @@ public class Problem1 {
 
     public static void problem1() {
 
-        logger.info("{}", printCount());
+        logger.info("{}", untilGetTwo());
     }
 
     public static void printDiceStat(PairOfDice pairOfDice) {
@@ -25,7 +25,7 @@ public class Problem1 {
      *
      * @return 돌린 횟수.
      */
-    public static int printCount() {
+    public static int untilGetTwo() {
 
         PairOfDice pairOfDice;
         int count = 0;
