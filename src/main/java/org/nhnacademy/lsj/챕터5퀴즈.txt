@@ -1,0 +1,237 @@
+Question 1:
+
+Object-oriented programming uses classes and objects. What are classes and what are objects?
+What is the relationship between classes and objects?
+
+클래스란 타입을 정의하기 위해 사용됩니다.
+타입은 Implementation 을 가지며 연산을 가집니다.
+
+오브젝트는 매우 큰 개념입니다. 클래스 , 인터페이스 또한 객체에 속합니다.
+하지만 우리가 말하는 보통의 객체는 이 클래스,인터페이스를 사용하기위해 , 찍어내서 쓰는 것을 의미합니다.
+하지만 오브젝트는 클래스와 동일하진 않습니다.
+
+오브젝트로 찍어내도 static한 메서드,변수 들은 Class에 속합니다.
+
+
+Question 2:
+
+Explain carefully what null means in Java, and why this special value is necessary.
+
+Reference Type의 경우에는 null을 할당 할 수 있습니다.
+null이란 , 값 자체가 존재하지 않는 , 초기화되지 않은 경우를 의미합니다.
+
+잘못된 참조를 할 경우에 Null을 이용해 NullPoint Exception을 터트릴수 있습니다.
+
+
+
+Question 3:
+
+What is a constructor? What is the purpose of a constructor in a class?
+
+생성자란 특별한 메서드로 객체를 사용하기 위해 메모리에 올리는 연산을 합니다.
+객체가 만들어질떄 단 한번 실행됩니다.
+
+생성자는 클래스에게 물어보는 메서드다 라고 생각합니다.
+
+
+
+Question 4:
+
+Suppose that Kumquat is the name of a class and that fruit is a variable of type Kumquat.
+What is the meaning of the statement "fruit = new Kumquat();"? That is,
+what does the computer do when it executes this statement? (Try to give a complete answer.
+The computer does several things.)
+
+new 를 통해 메모리에 heap영역애 할당됩니다,  해당 클래스가 갖고있는 변수 , 연산을 자유롭게 사용 가능합니다.
+new 를 통해 만들어진 변수를 instance variable이라 합니다.
+
+
+Question 5:
+
+What is meant by the terms instance variable and instance method?
+
+인스턴스 변수는 static 하지 않은 변수를 말합니다.
+instance methode는 static하지 않은 메서드를 말합니다.
+
+이들은 new 를 통해 객체가 생성될떄 객체에 속합니다.
+클래스 변수는 static 한 것을 의미하며
+이들은 객체에 속하지 않고 클래스에 속합니다.
+
+Question 6:
+
+Explain what is meant by the terms subclass and superclass.
+
+
+Sub Class 는 상속을 받은 클래스를 의미하며
+Super Class의 코드를 복사 붙여넣기 한 것과 같습니다.
+따라서 Super Class가 가지고 있는 연산들과 인스턴스 변수들을
+자유롭게 사용 가능합니다.
+또한 Super Class의 메서드를 오버라이딩해서 사용하거나
+추가적으로 확장 시켜 사용 할 수 있습니다.
+
+Super Class는 상속을 해주는 클래스를 의미하며
+Sub Class의 부모 클래스가 됩니다.
+
+
+Question 7:
+
+Modify the following class so that the two instance variables are private and there is a getter method
+and a setter method for each instance variable
+
+public class Player {
+   private String name;
+   private int score;
+}
+
+public String getName(){
+return this.name;
+}
+
+public int getScore(){
+return this.score;
+}
+
+
+
+Question 8:
+
+Explain why the class Player that is defined in the previous question has an instance method
+named toString(), even though no definition of this method appears in the definition of the class.
+
+
+toString은 자바의 최상위 클래스인 Object가 가지고 있습니다.
+모든 타입들은 Object의 서브 클래스이기 떄문에
+자연스럽게 toString또한 기본적으로 갖고있음을 의미합니다.
+
+따라서 사용자의 편의에 맞게 쓰려면 Overriding해서 사용해야 합니다.
+
+
+Question 9:
+
+Explain the term polymorphism.
+
+자바에서는 다형성을 표현하는 3가지 방법이 존재합니다.
+1. ad hoc 방법 , 이건 OverLoading을 의미합니다, 메서드의 파라미터와 , 반환값이 다르다면
+이름이 같은 메서드를 여러개 만들수 있음을 의미합니다.
+메서드를 사용하면 자연스럽게 dynamic dispatch합니다.
+
+2.SubTyping , 타입관계를 이용하여 특정한 타입의 서브타입만 메서드의 파라미터로 올 수 있도록
+만들수 있습니다.
+
+3.Generic <T>임을 명시해 타입이 정해지지 않았음을 의미합니다.
+따라서 int double float 어느 타입에 대해서도 올 수 있고 이를 통해 하나의 코드로
+여러가지 타입을 받아 쓸 수 있습니다.
+
+
+
+Question 10:
+
+Java uses "garbage collection" for memory management.
+Explain what is meant here by garbage collection. What is the alternative to garbage collection?
+
+가비지 컬렉터는 더 이상 사용하지 않은
+객체에 대해서 메모리를 해제시키는 것입니다.
+
+예를들어
+
+로컬변수를 생각해 본다면
+이는 로컬 변수가 있는 영역에서만 의미를 가집니다.
+이떄 사용하고나서 사용자가 따로 메모리 해제를 시켜주지 않아도
+가비지 컬렉터가 알아서 해제를 시켜 메모리를 확보해 줍니다.
+
+대안은 사용자가 직접 해제를 시켜주는 방법도 있지만
+이러한 경우에는 에러가 발생하기 매우 쉽기떄문에 좋은 방법이 아닙니다.
+
+
+Question 11:
+
+What is an abstract class, and how can you recognize an abstract class in Java?
+
+추상클래스는 추상메서드를 가진 클래스입니다.
+직접적인 구현보다는 이 타입은 이런 기능을 갖고있어야 한다는 명시를 할떄
+사용됩니다. 또한 생성자로 생성할수 없습니다.
+
+자바에서는 abstract한 것들은 abstract 키워드를 붙여서 사용됩니다.
+
+
+Question 12:
+
+What is this?
+
+this란 메서드 안에서 사용되며 , 이 메서드를 포함하고있는 객체를 의미합니다.
+
+따라서 a.메서드 를 했을떄 this는
+해당 메서드를 포함하고있는 객체 a를 지칭합니다.
+
+
+Question 13:
+
+For this problem, you should write a very simple but complete class.
+The class represents a counter that counts 0, 1, 2, 3, 4, ....
+The name of the class should be Counter.
+It has one private instance variable representing the value of the counter.
+ It has two instance methods: increment() adds one to the counter value,
+and getValue() returns the current counter value. Write a complete definition for the class,
+ Counter.
+
+
+Counter{
+
+private int count;
+
+public void increment(){
+this.count++;
+}
+
+public int getValue(){
+return this.count;
+}
+
+}
+
+
+Question 14:
+
+This problem uses the Counter class from the previous question.
+The following program segment is meant to simulate tossing a coin 100 times.
+It should use two Counter objects, headCount and tailCount,
+to count the number of heads and the number of tails.
+Fill in the blanks so that it will do so:
+
+Counter headCount, tailCount;
+tailCount = new Counter();
+headCount = new Counter();
+for ( int flip = 0;  flip < 100;  flip++ ) {
+   if (Math.random() < 0.5)    // There's a 50/50 chance that this is true.
+
+
+       headCount.increasement();   // Count a "head".
+
+   else
+
+       tailCount.increasement(); ;   // Count a "tail".
+}
+
+System.out.println("There were " + headCount.getValue() + " heads.");
+
+System.out.println("There were " + tailcount.getValue() + " tails.");
+
+
+Question 15:
+
+Explain why it can never make sense to test "if (obj.equals(null))".
+
+이 방식을 쓰면 객체 하나 하나를 만들떄 마다 검증해줘야 하지만
+
+try{
+}catch() 를 쓰면 한번에 검증할 수 있기 떄문에
+
+
+
+
+
+
+
+
+
+
