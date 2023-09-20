@@ -1,0 +1,98 @@
+Question 1:Object-oriented programming uses classes and objects. What are classes and what are objects? What is the relationship between classes and objects?
+- oop에서 클래스는 객체를 생성하는데 사용된다
+- 클래스에서 static : 객체에 포함되지 않음 non-static : 객체가 어떤 변수와 방법을 포함할지 지정하거나 설명
+
+Question 2:Explain carefully what null means in Java, and why this special value is necessary.
+- 변수에 저장된 실제 값, 어떤 객체도 가리키지 않음을 나타내기 위함
+- 실제 값이라서 인스턴스 변수 또는 인스턴스 메서드로 참조하는 게 불가능(객체가 아니라 참조할 인스턴스 변수가 없음)
+
+Question 3:What is a constructor? What is the purpose of a constructor in a class?
+- 클래스에 있는 서브루틴으로 새로 생성된 객체를 초기화한다
+
+Question 4:Suppose that Kumquat is the name of a class and that fruit is a variable of type Kumquat. What is the meaning of the statement "fruit = new Kumquat();"? That is, what does the computer do when it executes this statement? (Try to give a complete answer. The computer does several things.)
+- Kumquat 클래스에 속하는 새 객체를 생성하고 메모리를 할당해준다
+
+Question 5:What is meant by the terms instance variable and instance method?
+- 클래스가 아니라 객체에 속하는 변수랑 메서드(non-static)
+
+Question 6:Explain what is meant by the terms subclass and superclass.
+- A클래스를 B가 상속받는다고 하면 A 클래스가 super class, B 클래스가 subclass
+
+Question 7:Modify the following class so that the two instance variables are private and there is a getter method and a setter method for each instance variable:
+public class Player {
+   String name;
+   int score;
+}
+
+public class Player {
+	private String name;
+	private int score;
+	getter setter
+}
+
+Question 8:Explain why the class Player that is defined in the previous question has an instance method named toString(), even though no definition of this method appears in the definition of the class.
+- toString()은 Object 클래스에 선언되어 있는데 Player가 Object를 상속 받아서 Player에서도 toString()을 사용할 수 있다
+
+Question 9:Explain the term polymorphism.
+- 메서드가 수행하는 작업이 런타임에 메서드가 적용되는 개체의 실제 유형에 따라 달라지면 메서드는 다형성을 가진다
+- subclass에서 메서드를 재정의하면 subclass 객체는 superclass에 속한 객체와 다르게 메서드에 응답한다
+
+Question 10:Java uses "garbage collection" for memory management. Explain what is meant here by garbage collection. What is the alternative to garbage collection?
+- 더이상 사용할 수 없는 객체를 폐기하고 해당 객체가 차지하고 있던 메모리 공간을 회수하는 것
+- 가비지 컬랙션을 사용하지 않는다면 프로그래머가 필요하지 않은 객체를 처리해야 된다
+
+Question 11:What is an abstract class, and how can you recognize an abstract class in Java?
+- 객체를 구성하는 데 사용되지 않고 subclass를 만들기 위한 기초로만 사용되는 클래스. 모든 하위 클래스의 공통 속성을 표현하기 위해서만 존재한다
+- `abstract public class User { }`와 같이 표시
+
+Question 12:What is this?
+- 메소드가 포함된 객체를 참조하도록 설정하는 것
+
+Question 13:For this problem, you should write a very simple but complete class. The class represents a counter that counts 0, 1, 2, 3, 4, .... The name of the class should be Counter. It has one private instance variable representing the value of the counter. It has two instance methods: increment() adds one to the counter value, and getValue() returns the current counter value. Write a complete definition for the class, Counter.
+
+public class Counter {
+	private int count;
+	public void increment() { count++; }
+	public int getValue() { return count; }
+}
+
+Question 14:This problem uses the Counter class from the previous question. The following program segment is meant to simulate tossing a coin 100 times. It should use two Counter objects, headCount and tailCount, to count the number of heads and the number of tails. Fill in the blanks so that it will do so:
+
+Counter headCount, tailCount;
+tailCount = new Counter();
+headCount = new Counter();
+for ( int flip = 0;  flip < 100;  flip++ ) {
+   if (Math.random() < 0.5)    // There's a 50/50 chance that this is true.
+
+       ______________________ ;   // Count a "head".
+
+   else
+
+       ______________________ ;   // Count a "tail".
+}
+
+System.out.println("There were " + ___________________ + " heads.");
+
+System.out.println("There were " + ___________________ + " tails.");
+
+ans)
+Counter headCount, tailCount;
+tailCount = new Counter();
+headCount = new Counter();
+for ( int flip = 0;  flip < 100;  flip++ ) {
+   if (Math.random() < 0.5)    // There's a 50/50 chance that this is true.
+
+       headCount.increment();   // Count a "head".
+
+   else
+
+       tailCount.increment();   // Count a "tail".
+}
+
+System.out.println("There were " + headCount.getVlaue() + " heads.");
+
+System.out.println("There were " + tailCount.getValue() + " tails.");
+
+Question 15:Explain why it can never make sense to test "if (obj.equals(null))".
+- null은 객체가 아니라서 equals 메소드를 쓸 수 없다
+- String.equals(Object) 형태
