@@ -18,11 +18,36 @@ public class Exercise5 {
      * .run playGame
      */
     public static void exercise5() {
-        if (playGame()) {
-            logger.info("you win");
-        } else {
-            logger.info("computer win");
-        }
+        Scanner scanner = new Scanner(System.in);
+        int money;
+
+        BlackjackHand player = new BlackjackHand();
+        BlackjackHand dealer = new BlackjackHand();
+        logger.info("현재 금액 : ");
+        money = scanner.nextInt();
+        player.setMoney(money);
+
+        do {
+            player.clear();
+            dealer.clear();
+
+            logger.info("현재 금액을 확인해주세요. 배팅 금액 : ");
+            int betMoney = scanner.nextInt();
+
+            if (player.getMoney() < betMoney) {
+                continue;
+            }
+            money = player.getMoney();
+            if (playGame(player, dealer, betMoney)) {
+                logger.info("you win");
+                player.setMoney(money + betMoney);
+            } else {
+                logger.info("dealer win");
+                player.setMoney(money - betMoney);
+            }
+        } while (player.getMoney() > 0);
+
+        logger.info("수중에 돈이 다 떨어졌습니다. 게임이 종료되었습니다.");
     }
 
     /**
@@ -30,22 +55,17 @@ public class Exercise5 {
      *
      * @return 사용자가 이기면 true를 반환하고 딜러가 이기면 false를 반환
      */
-    private static boolean playGame() {
-        Card card;
+    private static boolean playGame(BlackjackHand player, BlackjackHand dealer, int betMoney) {
+        Card card = new Card();
         Scanner scanner = new Scanner(System.in);
         Deck deck = new Deck();
-        BlackjackHand player = new BlackjackHand();
-        BlackjackHand dealer = new BlackjackHand();
-        player.setName("player");
-        dealer.setName("dealer");
-        deck.shuffle();
         int cardNumber = 2;
 
+        initHand(player, dealer, deck);
+
         for (int i = 0; i < cardNumber; i++) {
-            card = deck.dealCard();
-            player.addCard(card);
-            card = deck.dealCard();
-            dealer.addCard(card);
+            dealCard(deck, player, card);
+            dealCard(deck, dealer, card);
         }
         if (dealer.getBlackjackValue() == WIN_NUMBER) {
             return false;
@@ -55,19 +75,21 @@ public class Exercise5 {
 
         while (true) {
             printCard(player, cardNumber);
-            printCard(dealer, cardNumber);
+            printCard(dealer, 1);
 
-            logger.info("1. stand\t 2. hit");
-            int choice = scanner.nextInt();
+            int choice;
+            do {
+                logger.info("Enter number (1. stand\t 2. hit)");
+                choice = scanner.nextInt();
+            } while (choice != 1 && choice != 2);
 
             if (choice == 1) {
                 if (dealer.getBlackjackValue() <= 16) {
-                    card = deck.dealCard();
-                    dealer.addCard(card);
+                    dealCard(deck, dealer, card);
                     cardNumber++;
                     printCard(dealer, cardNumber);
 
-                    if (dealer.getBlackjackValue() >= 21) {
+                    if (dealer.getBlackjackValue() > 21) {
                         return true;
                     } else if (dealer.getBlackjackValue() >= player.getBlackjackValue()) {
                         return false;
@@ -77,10 +99,8 @@ public class Exercise5 {
                 }
                 return false;
             } else if (choice == 2) {
-                card = deck.dealCard();
-                player.addCard(card);
-                card = deck.dealCard();
-                dealer.addCard(card);
+                dealCard(deck, player, card);
+                dealCard(deck, dealer, card);
 
                 cardNumber++;
                 if (player.getBlackjackValue() > 21) {
@@ -89,6 +109,17 @@ public class Exercise5 {
                 }
             }
         }
+    }
+
+    private static void dealCard(Deck deck, BlackjackHand player, Card card) {
+        card = deck.dealCard();
+        player.addCard(card);
+    }
+
+    private static void initHand(BlackjackHand player, BlackjackHand dealer, Deck deck) {
+        player.setName("player");
+        dealer.setName("dealer");
+        deck.shuffle();
     }
 
     private static void printCard(BlackjackHand hand, int cardNumber) {

@@ -1,22 +1,14 @@
 package org.nhnacademy.minju.classes;
 
 public class PairOfDice {
-    private int dice1 = (int) (Math.random() * 6) + 1;
-    private int dice2 = (int) (Math.random() * 6) + 1;
+    private int dice1;
+    private int dice2;
     private int count = 0;
 
     public void roll() {
         this.dice1 = (int) (Math.random() * 6) + 1;
         this.dice2 = (int) (Math.random() * 6) + 1;
         this.count++;
-    }
-
-    public int getDice1() {
-        return dice1;
-    }
-
-    public int getDice2() {
-        return dice2;
     }
 
     public int getDiceSum() {

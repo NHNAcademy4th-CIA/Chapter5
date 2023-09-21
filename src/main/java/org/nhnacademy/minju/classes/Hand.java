@@ -14,6 +14,15 @@ public class Hand {
 
     private ArrayList<Card> hand;   // The cards in the hand.
     private String name;
+    private int money;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     public String getName() {
         return name;
