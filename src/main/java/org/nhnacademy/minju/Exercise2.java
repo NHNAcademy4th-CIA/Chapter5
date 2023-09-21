@@ -21,11 +21,7 @@ public class Exercise2 {
         calc = new StatCalc();
         Scanner scanner = new Scanner(System.in);
         double inputNum;
-        while (true) {
-            inputNum = scanner.nextDouble();
-            if (inputNum == 0) {
-                break;
-            }
+        while ((inputNum = scanner.nextDouble()) != 0) {
             calc.enter(inputNum);
         }
         print(calc);
@@ -35,11 +31,14 @@ public class Exercise2 {
      * .print statCalc variable
      *
      * @param statCalc statCalc
-     *
      */
     public static void print(StatCalc statCalc) {
         logger.info("Total Count : {}", statCalc.getCount());
         logger.info("Sum : {}", statCalc.getSum());
+        if (statCalc.getCount() < 1) {
+            // 0이 입력되면 출력하지 않음
+            return;
+        }
         logger.info("Mean : {}", statCalc.getMean());
         logger.info("Standard Deviation : {}", statCalc.getStandardDeviation());
         logger.info("Maximum : {}", statCalc.getMax());
