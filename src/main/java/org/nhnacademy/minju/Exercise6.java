@@ -65,9 +65,9 @@ public class Exercise6 {
             if (userAnswers[i] == correctAnswer) {
                 logger.info("You were CORRECT.");
                 numberCorrect++;
-            } else {
-                logger.info("You said {}, which is INCORRECT.", userAnswers[i]);
+                continue;
             }
+            logger.info("You said {}, which is INCORRECT.", userAnswers[i]);
         }
         grade = numberCorrect * 10;
         logger.info("You got {} questions correct.", numberCorrect);
