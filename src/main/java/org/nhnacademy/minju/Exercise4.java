@@ -26,6 +26,7 @@ public class Exercise4 {
         Deck deck = new Deck();
         Random random = new Random();
         int cardNumber;
+        String replay;
 
         do {
             BlackjackHand blackjackHand = new BlackjackHand();
@@ -41,7 +42,10 @@ public class Exercise4 {
                 logger.info("{}\t", card);
             }
             logger.info("score of deck : {}", blackjackHand.getBlackjackValue());
-            logger.info("replay? (y/n)");
-        } while (!scanner.nextLine().equals("n"));
+            do {
+                logger.info("replay? Enter (y/n)");
+                replay = scanner.nextLine();
+            } while (!replay.equals("y") && !replay.equals("n"));
+        } while (!replay.equals("n"));
     }
 }
