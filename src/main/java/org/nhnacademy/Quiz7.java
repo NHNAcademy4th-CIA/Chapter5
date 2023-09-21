@@ -8,12 +8,26 @@ import org.slf4j.LoggerFactory;
  * Quiz7 -적용
  */
 public class Quiz7 {
-    private Logger logger = LoggerFactory.getLogger(Quiz6.class);
+    private Logger logger = LoggerFactory.getLogger(Quiz7.class);
     private Scanner scanner = new Scanner(System.in);
 
     public Quiz7() {
+        IntQuestion bigQuestion = new IntQuestion() {
+            public String getQuestion() {
+                return "What is the answer to the ultimate question " +
+                        " of life, the universe, and everything?";
+            }
+            public int getCorrectAnswer() {
+                return 42;
+            }
+        };
         int answer = 0;
-        for (int i = 0; i < 10; i++) {
+        logger.info(bigQuestion.getQuestion());
+        if(bigQuestion.getCorrectAnswer()==scanner.nextInt())
+        {
+            answer+=10;
+        }
+        for (int i = 0; i < 9; i++) {
             if(i%2==0)
             {
                 SubQuestion subQuestion = new SubQuestion();

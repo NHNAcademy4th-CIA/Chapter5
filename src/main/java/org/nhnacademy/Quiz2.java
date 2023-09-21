@@ -54,13 +54,8 @@ class StatCalc {
         }
         sum += num;
         squareSum += num * num;
-        if (num < min) {
-            min = num;
-        }
-        if (num > max) {
-            max = num;
-        }
-        count++;
+        min=Math.min(min,num);
+        max=Math.max(max,num);
     }
 
     /***

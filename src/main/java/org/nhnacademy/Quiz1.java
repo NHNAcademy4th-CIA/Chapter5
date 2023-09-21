@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /***
- * Quiz1 snakeEye만들기 private, getter, toString
+ * Quiz1 snakeEye만들기 private, toString
  */
 public class Quiz1 {
     Logger logger = LoggerFactory.getLogger(Quiz1.class);
