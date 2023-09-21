@@ -1,4 +1,4 @@
-package org.nhnacademy;
+package org.nhnacademy.jungbum;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

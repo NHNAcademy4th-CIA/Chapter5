@@ -1,4 +1,4 @@
-package org.nhnacademy;
+package org.nhnacademy.jungbum;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 public class Quiz1 {
     Logger logger = LoggerFactory.getLogger(Quiz1.class);
 
-    public Quiz1(){
+    public Quiz1() {
         PairOfDice pairOfDice = new PairOfDice();
         pairOfDice.hasPair(2);
-        logger.info("{}",pairOfDice);
+        logger.info("{}", pairOfDice);
     }
 
 
@@ -29,7 +29,7 @@ class PairOfDice {
 
     public PairOfDice() {
         roll();
-        count=0;
+        count = 0;
     }
 
     /***
@@ -38,20 +38,20 @@ class PairOfDice {
     public void roll() {
         // Roll the dice by setting each of the dice to be
         // a random number between 1 and 6.
-        die1 = (int)(Math.random()*6) + 1;
-        die2 = (int)(Math.random()*6) + 1;
+        die1 = (int) (Math.random() * 6) + 1;
+        die2 = (int) (Math.random() * 6) + 1;
         count++;
     }
 
     /**
      * pair가 나올떼까지 주사위 돌리는 메소드
+     *
      * @param num 원하는숫자
      * @return 몇번 굴렸는지
      */
-    public int hasPair(int num){
-        count =0;
-        while(!isPair(num))
-        {
+    public int hasPair(int num) {
+        count = 0;
+        while (!isPair(num)) {
             count++;
             roll();
         }
@@ -63,11 +63,12 @@ class PairOfDice {
      * @param  페어 번호
      * @return 페어가 맞으면 true
      */
-    public boolean isPair(int number){
-        return die1+die2==number&&die1==die2;
+    public boolean isPair(int number) {
+        return die1 + die2 == number && die1 == die2;
     }
+
     @Override
-    public String toString(){
-        return "snakeEyes가 되기 위해 주사위를 총 "+ count+ "번 던졌습니다.";
+    public String toString() {
+        return "snakeEyes가 되기 위해 주사위를 총 " + count + "번 던졌습니다.";
     }
 }

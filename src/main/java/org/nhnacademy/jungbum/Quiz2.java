@@ -1,4 +1,4 @@
-package org.nhnacademy;
+package org.nhnacademy.jungbum;
 
 import java.util.Scanner;
 import org.slf4j.Logger;
@@ -47,7 +47,6 @@ class StatCalc {
      * @param num 입력 숫자
      */
     public void enter(double num) {
-        if (isZero(num)) return;
         if (min == 0) {
             min = num;
             max = num;

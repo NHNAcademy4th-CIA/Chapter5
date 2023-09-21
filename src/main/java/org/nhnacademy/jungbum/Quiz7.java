@@ -1,4 +1,4 @@
-package org.nhnacademy;
+package org.nhnacademy.jungbum;
 
 import java.util.Scanner;
 import org.slf4j.Logger;
@@ -59,8 +59,10 @@ class SubQuestion implements IntQuestion{
     private int a, b;  // The numbers in the problem.
 
     public SubQuestion() { // constructor
-        a = (int) (Math.random() * 50 + 1);
-        b = (int) (Math.random() * 50);
+        while(!negative()) {
+            a = (int) (Math.random() * 50 + 1);
+            b = (int) (Math.random() * 50);
+        }
     }
 
 
@@ -78,6 +80,15 @@ class SubQuestion implements IntQuestion{
      */
     public int getCorrectAnswer() {
         return a - b;
+    }
+
+    public boolean negative()
+    {
+        if(a-b<0)
+        {
+            return true;
+        }
+        return false;
     }
 
 }
