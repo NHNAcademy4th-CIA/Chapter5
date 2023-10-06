@@ -1,7 +1,7 @@
 = Chapter 5 프로그래밍 문제 및 퀴즈 정의
 
 === link:https://math.hws.edu/javanotes/c5/exercises.html[Programing Exercise For Chapter 5]
-
+=== link:https://math.hws.edu/javanotes/c5/quiz.html[Quiz on Chapter 5]
 ---
 
 ==  Chapter 5 Quiz
